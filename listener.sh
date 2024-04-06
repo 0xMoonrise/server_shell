@@ -1,6 +1,7 @@
 #!/usr/bin/expect
 #script found on:
 #https://blog.polverari.com.br/en/posts/full-auto-interactive-tty/
+#Configure the listener with ./listener.sh 9001 if you want the listener port to change and wait for the connection after it has been executed.
 set timeout -1
 
 set rows [exec bash -c {stty -a | head -1 | grep -oP '(?<=rows )\w+(?=;)'}]
