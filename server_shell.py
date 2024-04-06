@@ -27,9 +27,6 @@ parser.add_argument('-i', '--inet',
 parser.add_argument('-p', '--port',
                     help='Set netcat port listening',
                     default='9001')
-parser.add_argument('-l', '--listener',
-                    help='Deploy a quick listener',
-                    action=argparse.BooleanOptionalAction)
 
 args = parser.parse_args()
 server_address = ('0.0.0.0', 8081)
